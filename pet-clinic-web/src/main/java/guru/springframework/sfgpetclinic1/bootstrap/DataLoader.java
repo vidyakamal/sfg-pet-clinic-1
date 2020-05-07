@@ -26,9 +26,9 @@ public class DataLoader implements CommandLineRunner {
         ownerServiceMap.save(owner);
 
         Owner owner1 = new Owner();
-        owner.setId(2L);
-        owner.setFirstName("cid");
-        owner.setLastName("vijayan");
+        owner1.setId(2L);
+        owner1.setFirstName("cid");
+        owner1.setLastName("vijayan");
         ownerServiceMap.save(owner1);
 
         System.out.println("Loaded Owners");
