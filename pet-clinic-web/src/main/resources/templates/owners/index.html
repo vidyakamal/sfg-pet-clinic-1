@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.th">
+<html lang="en" xmlns:th="http://www.th" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 <head>
     <meta charset="UTF-8">
     <title>List of Owners</title>
 </head>
 <body>
 <h1 th:text="'List of Owners'">Owners List </h1>
-<table>
+<table class="table table-striped">
     <thead>
     <tr>
-        <th>
+        <th style="width: 150px">
             Id
         </th>
-        <th>
+        <th style="width: 150px">
             First Name
         </th>
-        <th>
+        <th style="width: 150px">
             LastName
         </th>
     </tr>
