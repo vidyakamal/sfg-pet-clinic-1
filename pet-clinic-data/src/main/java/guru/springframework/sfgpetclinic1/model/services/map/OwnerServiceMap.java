@@ -5,10 +5,12 @@ import guru.springframework.sfgpetclinic1.model.services.OwnerService;
 import guru.springframework.sfgpetclinic1.model.Owner;
 import guru.springframework.sfgpetclinic1.model.services.PetService;
 import guru.springframework.sfgpetclinic1.model.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 @Service
+@Profile({"default","map"})
 public class OwnerServiceMap extends AbstractMapservice<Owner,Long> implements OwnerService {
     private final PetTypeService petTypeService;
     private final PetService petService;
@@ -26,9 +28,12 @@ public class OwnerServiceMap extends AbstractMapservice<Owner,Long> implements O
     @Override
     public Owner save( Owner object) {
         if(object != null) {
+            System.out.println(object.getPets());
             if(object.getPets() != null){
+                System.out.println("object.getPets() is not null");
                 object.getPets().forEach(pet -> {
                     if(pet.getPetType()!=null){
+                        System.out.println("PetType is not null");
                         if (pet.getPetType().getId()==null){
                             pet.setPetType(petTypeService.save(pet.getPetType()));
                         }
@@ -40,6 +45,8 @@ public class OwnerServiceMap extends AbstractMapservice<Owner,Long> implements O
                         pet.setId(savedPet.getId());
                     }
                 });
+            }else {
+                System.out.println("object.getPets() is  null");
             }
 
 
@@ -66,6 +73,6 @@ public class OwnerServiceMap extends AbstractMapservice<Owner,Long> implements O
 
     @Override
     public Owner findByLastName(String lastName) {
-        return null;
+       return this.findAll().stream().filter(owner -> owner.getLastName().equalsIgnoreCase(lastName)).findFirst().orElse(null);
     }
 }

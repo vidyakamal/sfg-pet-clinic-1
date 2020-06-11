@@ -4,7 +4,7 @@ import guru.springframework.sfgpetclinic1.model.Owner;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class OwnerServiceMapTest {
+class OwnerServiceMapTest1 {
     OwnerServiceMap ownerServiceMap;
 
     @BeforeEach
