@@ -45,7 +45,7 @@ class OwnerSDJpaServiceTest {
 
         when(ownerRepository.findByLastName(any())).thenReturn(returnedOwner);
        Owner  smith = ownerSDJpaService.findByLastName("Smith");
-       assertEquals("smith", smith.getLastName());
+       assertEquals("Smith", smith.getLastName());
 
     }
 
@@ -69,7 +69,7 @@ class OwnerSDJpaServiceTest {
         when(ownerRepository.findById(anyLong())).thenReturn(Optional.of(returnedOwner));
         Owner owner = ownerSDJpaService.findByID(1L);
         assertNotNull(owner);
-        verify(ownerRepository).save(any());
+        verify(ownerRepository).findById(anyLong());
 
 
     }
